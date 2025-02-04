@@ -1,7 +1,7 @@
-/* gestion_tareas/static/src/css/styles.css */
+/* evaluacion_desempeno/static/src/css/styles.css */
 
-/* Estilos específicos solo para la vista Kanban de gestión de tareas */
-.gestion_tarea_kanban {
+/* Estilos específicos solo para la vista Kanban de evaluación de desempeño */
+.evaluacion_desempeno_kanban {
     display: flex;
     flex-direction: column;
     padding: 10px; /* Añadir padding interno */
@@ -14,28 +14,28 @@
     min-height: 140px; /* Controlar la altura mínima */
 }
 
-.gestion_tarea_kanban > div {
+.evaluacion_desempeno_kanban > div {
     margin-bottom: 5px; /* Añadir un pequeño margen entre los campos */
     font-size: 14px; /* Establecer tamaño de fuente para los campos */
 }
 
-.gestion_tarea_kanban > div:first-child {
+.evaluacion_desempeno_kanban > div:first-child {
     background-color: #3f51b5; /* Azul morado de Odoo */
     color: white; /* Asegúrate de que el texto sea visible */
     padding: 10px; /* Añadir más padding para que el fondo ocupe todo el espacio */
     border-radius: 4px; /* Bordes redondeados para el fondo */
 }
 
-.gestion_tarea_kanban strong {
+.evaluacion_desempeno_kanban strong {
     font-size: 16px;
     font-weight: bold;
 }
 
-.gestion_tarea_kanban button {
+.evaluacion_desempeno_kanban button {
     font-size: 12px; /* Ajustar tamaño del texto del botón */
     padding: 5px 10px; /* Ajustar padding del botón */
 }
 
-.gestion_tarea_kanban span {
+.evaluacion_desempeno_kanban span {
     font-size: 14px;
 }

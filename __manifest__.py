@@ -8,8 +8,8 @@
     'author': 'Gonzalo Carretero',
     'website': 'https://tuweb.com',
     'license': 'LGPL-3',
-    'depends': ['base', 'mail'],
-    'icon': '/evaluacion_desempeno/static/description/icon.png',
+    'depends': ['base', 'mail','hr'],
+    'icon': '/evaluacion_desempeno/static/description/icon53.png',
     'data': [
         'views/evaluacion_desempeno.xml',
         'security/ir.model.access.csv',
@@ -23,7 +23,7 @@
     """,''
     'assets': {
         'web.assets_backend': [
-            '/gestion_tareas/static/src/css/styles.css',
+            '/evaluacion_desempeno/static/src/css/styles.css',
         ],
     },
 }

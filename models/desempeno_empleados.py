@@ -2,15 +2,14 @@
 
 from odoo import models, fields, api
 
-class DesempenoEmpleados(models.Model):
-
-    _name = 'desempeno.empleados'
-    _description = 'Tarea de desempeno'
+class EvaluacionDesempeno(models.Model):
+    _name = 'evaluacion.desempeno'
+    _description = 'Evaluacion de Desempeno'
     _inherit = ['mail.thread']
 
-    name  = fields.Char(string='Titulo', required=True , tracking=True)
-    description  = fields.Text(string='Comentarios', tracking=True)
-    date = fields.Date(string='Fecha de Evaluacion', required=True)
+    name = fields.Char(string='Titulo', required=True, tracking=True)
+    comentarios = fields.Text(string='Comentarios', tracking=True)
+    fechaEvaluacion = fields.Date(string='Fecha de Evaluacion', required=True)
     score = fields.Integer(
         string="Puntuacion",
         required=True,
@@ -22,9 +21,9 @@ class DesempenoEmpleados(models.Model):
         ('draft', 'Borrador'),
         ('in_progress', 'En Progreso'),
         ('done', 'Hecho'),
-    ], string='Estado', default='draft',tracking=True)
+    ], string='Estado', default='draft')
 
-    assigned_to = fields.Many2one(
+    empleadoAsignado = fields.Many2one(
         "hr.employee", 
         string="Empleado Asignado",
         required=True,
@@ -32,9 +31,19 @@ class DesempenoEmpleados(models.Model):
         ondelete='restrict'
     )
 
+    def iniciar_evaluacion(self):
+        self.state = 'in_progress'
 
-    @api.constrains('punctuation')
+    def finalizar_evaluacion(self):
+        self.state = 'done'
+
+    @api.onchange('state')
+    def _onchange_state(self):
+        if self.state == 'completed':
+            self.priority = 0
+
+    @api.constrains('score')
     def _check_punctuation(self):
         for record in self:
-            if record.punctuation > 10 or record.punctuation < 0:
+            if record.score > 10 or record.score < 0:
                 raise ValidationError(_('La puntuación debe estar entre 0 y 10'))
